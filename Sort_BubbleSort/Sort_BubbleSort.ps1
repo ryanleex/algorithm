@@ -14,12 +14,18 @@ for( $i = 0; $i -lt $MAX_SIZE; $i += 1){
 # Print Input
 function printArr{
   param(
-    [int[]]$arr
+    [int[]]$arr,
+    [int]$wkIndex = 0 #
   )
   foreach($i in $arr){
     $tmp = ("{0,3}" -f $i)
-    Write-Host -NoNewLine [$tmp]
-    Write-Host ("#" * $i)
+    if( $i -eq $wkIndex ){
+      Write-Host -NoNewLine [$tmp] -ForegroundColor Red
+      Write-Host ("#" * $i) -ForegroundColor Red
+    } else {
+      Write-Host -NoNewLine [$tmp]
+      Write-Host ("#" * $i)
+    }
   }
   Write-Host ""
 }
@@ -32,7 +38,7 @@ Write-Host ("|" * $WIDTH)
 $len = $arrInt.Length
 for( $i = 0; $i -lt $len - 1; $i += 1 ){
   for( $j = 0; $j -lt $len - $i - 1; $j += 1 ){
-    if( $arrInt[$j] -gt $arrInt[$j + 1]){
+    if( $arrInt[$j] -gt $arrInt[$j + 1] ){
 #
 #echo $tmp $arrInt[$j] $arrInt[$j + 1]
 #Read-Host "Press Enter to continue..."
@@ -46,7 +52,7 @@ for( $i = 0; $i -lt $len - 1; $i += 1 ){
 #
       Clear-Host
       Write-Host ("|" * $WIDTH)
-      printArr -arr $arrInt
+      printArr -arr $arrInt -wkIndex $j
       Write-Host ("|" * $WIDTH)
       Start-Sleep -Milliseconds 100
     }
