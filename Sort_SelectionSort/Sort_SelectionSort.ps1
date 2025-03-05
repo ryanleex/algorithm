@@ -1,4 +1,4 @@
-# -- Sort_BubbleSort.ps1
+# -- Sort_SelectionSort.ps1
 
 # Initial
 $WIDTH = $Host.UI.RawUI.WindowSize.Width
