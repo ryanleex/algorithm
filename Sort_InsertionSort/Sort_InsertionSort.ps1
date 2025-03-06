@@ -2,7 +2,7 @@
 
 # Initial
 $WIDTH = $Host.UI.RawUI.WindowSize.Width
-$MAX_SIZE = 20
+$MAX_SIZE = 40
 #[int[$MAX_SIZE]]$arrInt = @()
 $arrInt = New-Object int[] $MAX_SIZE
 for( $i = 0; $i -lt $MAX_SIZE; $i += 1){
