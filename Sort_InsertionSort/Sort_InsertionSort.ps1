@@ -1,4 +1,4 @@
-# -- Sort_SelectionSort.ps1
+# -- Sort_InsertionSort.ps1
 
 # Initial
 $WIDTH = $Host.UI.RawUI.WindowSize.Width
@@ -31,17 +31,15 @@ function printArr{
 printArr -arr $arrInt
 
 $len = $arrInt.Length
-$min_idx = 0
-for( $i = 0; $i -lt $len - 1; $i += 1 ){
-  $min_idx = $i
-  for( $j = $i + 1; $j -lt $len; $j += 1 ){
-    if( $arrInt[$j] -lt $arrInt[$min_idx] ){
-      $min_idx = $j
-    }
+$key = 0
+for( $i = 1; $i -lt $len; $i += 1 ){
+  $key = $arrInt[$i]
+  $j = $i - 1
+  while( ( $j -ge 0 ) -and ( $arrInt[$j] -gt $key ) ){
+    $arrInt[$j + 1] = $arrInt[$j]
+    $j = $j - 1
   }
-  $tmp = $arrInt[$i]
-  $arrInt[$i] = $arrInt[$min_idx]
-  $arrInt[$min_idx] = $tmp
+  $arrInt[$j + 1] = $key
 
   printArr -arr $arrInt
   Start-Sleep -Milliseconds 100
